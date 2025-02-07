@@ -1,0 +1,11 @@
+<h2>Available Classes</h2>
+{% for class in classes %}
+    <div>
+        <h3>{{ class.name }} by {{ class.instructor }}</h3>
+        <p>Time: {{ class.time }}</p>
+        <p>Available Slots: {{ class.available_slots }}</p>
+        <form action="/book_class/{{ class.id }}" method="POST">
+            <button type="submit" {% if class.available_slots == 0 %}disabled{% endif %}>Book Now</button>
+        </form>
+    </div>
+{% endfor %}
